@@ -17,4 +17,11 @@ describe('When: I use the reading list feature', () => {
       )
     );
   });
+  it('Then: I should remove an item from my reading list just got Inserted', async () => {
+    await browser.get('/');
+    await browser.wait(
+      ExpectedConditions.elementToBeClickable( $('#removefromlist'))
+      
+    );
+  });
 });
