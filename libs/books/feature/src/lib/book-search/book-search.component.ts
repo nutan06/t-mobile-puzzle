@@ -17,7 +17,7 @@ import { Book } from '@tmo/shared/models';
 })
 export class BookSearchComponent implements OnInit {
   books: ReadingListBook[];
-
+  progressBar: boolean;
   searchForm = this.fb.group({
     term: ''
   });
@@ -54,6 +54,10 @@ export class BookSearchComponent implements OnInit {
 
   searchBooks() {
     if (this.searchForm.value.term) {
+      this.progressBar = true;
+      setTimeout(() => {
+        this.progressBar = false;
+      }, 1000);
       this.store.dispatch(searchBooks({ term: this.searchTerm }));
     } else {
       this.store.dispatch(clearSearch());

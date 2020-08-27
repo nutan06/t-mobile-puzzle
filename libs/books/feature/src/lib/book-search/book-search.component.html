@@ -1,3 +1,9 @@
+<div [ngClass]="{ 'visibility-hidden': !progressBar }">
+  <mat-progress-bar
+          color="accent"
+          mode="buffer"
+          ></mat-progress-bar>
+</div>
 <form [formGroup]="searchForm" (submit)="searchBooks()">
   <mat-form-field floatLabel="never">
     <input
@@ -8,7 +14,7 @@
       formControlName="term"
     />
     <button mat-icon-button matSuffix>
-      <mat-icon>search</mat-icon>
+      <mat-icon aria-label="search">search</mat-icon>
     </button>
   </mat-form-field>
 </form>
@@ -21,7 +27,7 @@
       </div>
       <div class="book--content">
         <div class="book--content--cover">
-          <img src="{{ b.coverUrl }}" />
+        <img src="{{ b.coverUrl }}" alt="{{b.title}}" />
         </div>
         <div class="book--content--info">
           <div><strong>Author:</strong> {{ b.authors.join(',') }}</div>
@@ -48,9 +54,9 @@
 <ng-template #empty>
   <div class="empty">
     <p>
-      Try searching for a topic, for example "<a (click)="searchExample()"
-        >JavaScript</a
-      >".
+      Try searching for a topic, for example "<button (click)="searchExample()"
+      class="link" >JavaScript</button
+    >".
     </p>
   </div>
 </ng-template>
