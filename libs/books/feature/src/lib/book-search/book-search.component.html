@@ -4,7 +4,7 @@
           mode="buffer"
           ></mat-progress-bar>
 </div>
-<form [formGroup]="searchForm" (submit)="searchBooks()">
+<form [formGroup]="searchForm">
   <mat-form-field floatLabel="never">
     <input
       autoFocus
@@ -12,6 +12,7 @@
       type="search"
       placeholder="Search for books to add to your reading list"
       formControlName="term"
+      (keyup)="searchBooks()"  
     />
     <button mat-icon-button matSuffix>
       <mat-icon aria-label="search">search</mat-icon>
