@@ -11,6 +11,17 @@
     </div>
     <div>
       <button
+      mat-icon-button
+        color="primary"
+        [attr.aria-label]="'mark book as read '"
+        (click)="updateFinished(b)"
+        [ngClass]= "{'book-finished':b.finished}"
+       >        
+       <mat-icon>done</mat-icon>
+      </button>
+    </div>
+    <div>
+      <button
         mat-icon-button
         color="warn"
         [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
