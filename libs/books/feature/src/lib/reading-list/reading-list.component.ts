@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getReadingList, removeFromReadingList } from '@tmo/books/data-access';
+import { getReadingList, removeFromReadingList,updateFinished } from '@tmo/books/data-access';
+import { ReadingListItem } from '@tmo/shared/models';
+import { Update } from '@ngrx/entity';
 
 @Component({
   selector: 'tmo-reading-list',
@@ -10,9 +12,19 @@ import { getReadingList, removeFromReadingList } from '@tmo/books/data-access';
 export class ReadingListComponent {
   readingList$ = this.store.select(getReadingList);
 
-  constructor(private readonly store: Store) {}
+  constructor(private store: Store) {}
 
   removeFromReadingList(item) {
     this.store.dispatch(removeFromReadingList({ item }));
+  }
+  updateFinished(item){
+    const params: Update<ReadingListItem> = {
+      id: item.bookId,
+      changes:{
+        finished: true,
+        finishedDate: ''+ new Date()
+      }
+    };
+    this.store.dispatch(updateFinished({ item: params }));
   }
 }

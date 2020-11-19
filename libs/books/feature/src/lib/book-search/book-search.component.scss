@@ -68,5 +68,17 @@ form {
   justify-content: center;
   min-height: 50vh;
   font-size: 1.5rem;
-  color: $gray40;
+  
+}
+.visibility-hidden {
+  visibility: hidden;
+}
+.link{
+  border: none;
+  cursor: pointer;
+  color:$pink-accent;
+  background-color:$gray05;
+}
+.book-finished{
+  background-color:$pink-accent;
 }
